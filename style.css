@@ -1,0 +1,461 @@
+/* --- IMPORTAÇÃO DE FONTES --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+/* --- RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #fcf9f7;
+    line-height: 1.6;
+}
+
+/* --- IMAGENS --- */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* --- CONTAINER --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 120px;
+
+    background-image: url("./img/fundo\ container.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- TIPOGRAFIA --- */
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: #2c2c2c;
+    font-size: 2rem;
+    margin-top: 10px;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    color: #555;
+    font-size: 1rem;
+}
+
+/* --- HEADER --- */
+.header-principal {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(106, 27, 49, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #d4a373;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    z-index: 1000;
+
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.header-principal:hover {
+    background: rgba(80, 15, 35, 1);
+}
+
+.header-conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* --- LOGO --- */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    max-width: 120px;
+    height: auto;
+    margin-top: 10px;
+    display: block;
+
+    transition: all 0.4s ease-in-out;
+    filter: brightness(0) invert(1) drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
+}
+
+.logo-area:hover .logo {
+    transform: scale(1.05);
+    filter: drop-shadow(0px 0px 8px rgba(212, 163, 115, 0.6));
+}
+
+/* --- TÍTULO --- */
+.titulo-loja {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #fff;
+    letter-spacing: 1px;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* --- MENU --- */
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fcf9f7;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    position: relative;
+    padding: 5px 0;
+    margin-left: 60px;
+    transition: 0.3s;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #d4a373;
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #d4a373;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* --- MAIN --- */
+main {
+    padding: 20px;
+    min-height: 100vh;
+}
+
+section {
+    scroll-margin-top: 100px;
+}
+
+/* --- PRODUTOS --- */
+.secao-produtos {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.titulo-secao {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #2c2c2c;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.titulo-secao::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background-color: #d4a373;
+    margin: 15px auto;
+}
+
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* --- CARD --- */
+.card-produto {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.card-produto:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.imagem-container {
+    overflow: hidden;
+    height: 250px;
+}
+
+@media (min-width: 768px) {
+    .imagem-container {
+        height: 350px;
+    }
+}
+
+.imagem-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.card-produto:hover .imagem-container img {
+    transform: scale(1.1);
+}
+
+/* --- INFO --- */
+.info-produto {
+    padding: 25px;
+}
+
+.info-produto span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #d4a373;
+    font-weight: 600;
+}
+
+.info-produto h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin: 10px 0;
+    color: #2c2c2c;
+}
+
+.info-produto p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+/* --- BOTÃO --- */
+.btn-ver-mais {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 1px solid #d4a373;
+    color: #d4a373;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.btn-ver-mais:hover {
+    background-color: #d4a373;
+    color: #fff;
+}
+
+/* --- RODAPÉ --- */
+.rodape {
+    background-color: #2c2c2c;
+    color: #fcf9f7;
+    padding: 60px 0 20px 0;
+    margin-top: 50px;
+}
+
+.rodape-conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.rodape-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #d4a373;
+    margin-bottom: 15px;
+}
+
+.rodape-subtitulo {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.rodape-box p {
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.social-link {
+    background-color: rgba(212, 163, 115, 0.1);
+    border: 1px solid #d4a373;
+    color: #d4a373;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.social-link:hover {
+    background-color: #d4a373;
+    color: #fff;
+}
+
+.mapa {
+    margin-top: 20px;
+    border: 2px solid #d4a373;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.rodape-inferior {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* --- WHATSAPP --- */
+.btn-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 2000;
+    cursor: pointer;
+    animation: pulsar-wpp 2s infinite;
+}
+
+.icone-wpp::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128c7e;
+    transform: scale(1.1);
+}
+
+/* --- ANIMAÇÃO --- */
+@keyframes pulsar-wpp {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 768px) {
+
+    .header-conteudo {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .titulo-loja {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .btn-whatsapp {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 18px;
+        font-size: 0.8rem;
+    }
+}
+
+/* MENU HAMBURGUER */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* RESPONSIVO PROFISSIONAL */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background: #6a1b31;
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .navbar.active {
+        display: flex;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .header-conteudo {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
