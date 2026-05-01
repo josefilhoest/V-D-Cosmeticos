@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>V&D Cosméticos</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header class="header-principal" id="header">
 
-    <div class="header-conteudo">
+        <div class="header-conteudo">
 
-        <div class="logo-area">
-            <img class="logo" src="./img/logo v&d cosmeticos.png" alt="Logo V&D Cosméticos">
-            <h1 class="titulo-loja">V&D Cosméticos e Variedades</h1>
+            <div class="logo-area">
+                <img class="logo" src="./img/logo v&d cosmeticos.png" alt="Logo V&D Cosméticos">
+                <h1 class="titulo-loja">V&D Cosméticos e Variedades</h1>
+            </div>
+
+            <!-- BOTÃO HAMBURGUER -->
+            <div class="menu-toggle" id="menu-toggle">
+                ☰
+            </div>
+
+            <nav class="navbar" id="navbar">
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                </ul>
+            </nav>
+
+        </div>
+        <div class="carrinho-icon" id="abrirCarrinho">
+            🛒 <span id="contador">0</span>
         </div>
 
-        <!-- BOTÃO HAMBURGUER -->
-        <div class="menu-toggle" id="menu-toggle">
-            ☰
-        </div>
-
-        <nav class="navbar" id="navbar">
-            <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#produtos">Produtos</a></li>
-            </ul>
-        </nav>
-
-    </div>
-
-</header>
+    </header>
 
     <div class="container">
         <main>
@@ -41,42 +46,117 @@
             </section>
             <section id="sobre">
                 <h2>Sobre Nós</h2>
-                <p>A V&D Cosméticos é uma loja dedicada a oferecer produtos de alta qualidade para cuidados pessoais e beleza. Nossa missão é proporcionar aos nossos clientes uma experiência de compra excepcional, com uma ampla variedade de produtos para atender a todas as necessidades de beleza.</p>
+                <p>A V&D Cosméticos é uma loja dedicada a oferecer produtos de alta qualidade para cuidados pessoais e
+                    beleza. Nossa missão é proporcionar aos nossos clientes uma experiência de compra excepcional, com
+                    uma ampla variedade de produtos para atender a todas as necessidades de beleza.</p>
             </section>
             <section id="produtos" class="secao-produtos">
                 <h2 class="titulo-secao">Nossas Marcas Favoritas</h2>
                 <div class="grid-produtos">
                     <div class="card-produto">
                         <div class="imagem-container">
-                            <img src="./img/imagens natura.jpg" alt="Produtos Natura">
+                            <img src="./img/imagens natura.jpg" alt="Natura">
                         </div>
                         <div class="info-produto">
                             <span>Bem Estar Bem</span>
                             <h3>Natura</h3>
-                            <p>O cuidado com a natureza refletido na sua pele.</p>
-                            <a href="#" class="btn-ver-mais">Explorar</a>
+                            <p>Marca parceira com foco em beleza natural.</p>
+                            <a href="#loja" class="btn-ver-mais">Ver Produtos</a>
                         </div>
                     </div>
                     <div class="card-produto">
                         <div class="imagem-container">
-                            <img src="./img/avon perfumes.png" alt="Produtos Avon">
+                            <img src="./img/avon perfumes.png" alt="Avon">
                         </div>
                         <div class="info-produto">
                             <span>Beleza que faz sentido</span>
                             <h3>Avon</h3>
-                            <p>Maquiagens e fragrâncias que celebram você.</p>
-                            <a href="#" class="btn-ver-mais">Explorar</a>
+                            <p>Perfumes, maquiagens e cuidados pessoais.</p>
+                            <a href="#loja" class="btn-ver-mais">Ver Produtos</a>
                         </div>
                     </div>
                     <div class="card-produto">
                         <div class="imagem-container">
-                            <img src="./img/eudora perfumes.jpg" alt="Produtos Eudora">
+                            <img src="./img/eudora perfumes.jpg" alt="Eudora">
                         </div>
                         <div class="info-produto">
                             <span>Brilho Único</span>
                             <h3>Eudora</h3>
-                            <p>Sofisticação e performance para momentos especiais.</p>
-                            <a href="#" class="btn-ver-mais">Explorar</a>
+                            <p>Produtos premium para ocasiões especiais.</p>
+                            <a href="#loja" class="btn-ver-mais">Ver Produtos</a>
+                        </div>
+                    </div>
+                    <div class="card-produto">
+                        <div class="imagem-container">
+                            <img src="./img/linha-de-produtos-o-boticario.jpg" alt="O Boticário">
+                        </div>
+                        <div class="info-produto">
+                            <span>Acredite Na Beleza</span>
+                            <h3>O Boticário</h3>
+                            <p>Fragrâncias e cuidados com o corpo.</p>
+                            <a href="#loja" class="btn-ver-mais">Ver Produtos</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="loja" class="secao-produtos">
+                <h2 class="titulo-secao">Produtos à Venda</h2>
+                <div class="grid-produtos">
+                    <div class="card-produto">
+                        <div class="imagem-container">
+                            <img src="./img/avon perfumes.png" alt="Eau de Parfum Floral">
+                        </div>
+                        <div class="info-produto">
+                            <span>Perfume Feminino</span>
+                            <h3>Eau de Parfum Floral</h3>
+                            <p>Fragrância marcante para uso diário e ocasiões especiais.</p>
+                            <p class="preco-produto">R$ 79,90</p>
+                            <button class="btn-add" data-nome="Eau de Parfum Floral" data-preco="79.90">
+                                Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-produto">
+                        <div class="imagem-container">
+                            <img src="./img/imagens natura.jpg" alt="Blush Cremoso Natura">
+                        </div>
+                        <div class="info-produto">
+                            <span>Maquiagem</span>
+                            <h3>Blush Cremoso Natura</h3>
+                            <p>Coloração suave com acabamento acetinado.</p>
+                            <p class="preco-produto">R$ 59,90</p>
+                            <button class="btn-add" data-nome="Blush Cremoso Natura" data-preco="59.90">
+                                Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-produto">
+                        <div class="imagem-container">
+                            <img src="./img/eudora perfumes.jpg" alt="Batom Hidratante Eudora">
+                        </div>
+                        <div class="info-produto">
+                            <span>Maquiagem</span>
+                            <h3>Batom Hidratante Eudora</h3>
+                            <p>Cobertura rica com sensação leve nos lábios.</p>
+                            <p class="preco-produto">R$ 49,90</p>
+                            <button class="btn-add" data-nome="Batom Hidratante Eudora" data-preco="49.90">
+                                Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-produto">
+                        <div class="imagem-container">
+                            <img src="./img/linha-de-produtos-o-boticario.jpg" alt="Creme Hidratante O Boticário">
+                        </div>
+                        <div class="info-produto">
+                            <span>Cuidados com a pele</span>
+                            <h3>Creme Hidratante O Boticário</h3>
+                            <p>Hidratação profunda para pele macia e perfumada.</p>
+                            <p class="preco-produto">R$ 69,90</p>
+                            <button class="btn-add" data-nome="Creme Hidratante O Boticário" data-preco="69.90">
+                                Adicionar ao Carrinho
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -84,11 +164,53 @@
         </main>
     </div>
 
+    <section id="depoimentos" class="secao-depoimentos">
+        <h2 class="titulo-secao">O que nossos clientes dizem</h2>
+
+        <div class="grid-depoimentos">
+
+            <div class="card-depoimento">
+                <p class="texto">"Produtos incríveis! Chegaram rápido e a qualidade é excelente. Recomendo muito!"</p>
+                <div class="cliente">
+                    <img src="https://i.pravatar.cc/100?img=5" alt="Cliente">
+                    <div>
+                        <h4>Maria Silva</h4>
+                        <span>Cliente satisfeita</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-depoimento">
+                <p class="texto">"Adorei os perfumes! Fixação ótima e preço justo. Vou comprar novamente."</p>
+                <div class="cliente">
+                    <img src="https://i.pravatar.cc/100?img=12" alt="Cliente">
+                </div>
+                <div>
+                    <h4>João Pereira</h4>
+                    <span>Cliente fiel</span>
+                </div>
+            </div>
+
+            <div class="card-depoimento">
+                <p class="texto">"Atendimento excelente e produtos de marcas confiáveis. Super indico!"</p>
+                <div class="cliente">
+                    <img src="https://i.pravatar.cc/100?img=20" alt="Cliente">
+                    <div>
+                        <h4>Ana Souza</h4>
+                        <span>Cliente feliz</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <footer class="rodape">
         <div class="rodape-conteudo">
             <div class="rodape-box">
                 <h3 class="rodape-titulo">V&D Cosméticos</h3>
-                <p>Sua beleza em evidência com as melhores marcas do mercado. Consultoria personalizada e produtos originais.</p>
+                <p>Sua beleza em evidência com as melhores marcas do mercado. Consultoria personalizada e produtos
+                    originais.</p>
             </div>
             <div class="rodape-box">
                 <h4 class="rodape-subtitulo">Acompanhe-nos</h4>
@@ -99,10 +221,14 @@
                 <p class="contato-info">contato@vdcosmeticos.com.br</p>
             </div>
             <div class="mapa">
-                <iframe src="https://www.google.com/maps/embed?pb=!4v1774145501878!6m8!1m7!1sDJ1xGAwI2E85w8RsIKqr2w!2m2!1d-4.361587192607771!2d-38.02892920565057!3f255.69907418081482!4f-5.700077838468843!5f0.7820865974627469" width="350" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!4v1774145501878!6m8!1m7!1sDJ1xGAwI2E85w8RsIKqr2w!2m2!1d-4.361587192607771!2d-38.02892920565057!3f255.69907418081482!4f-5.700077838468843!5f0.7820865974627469"
+                    width="350" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
-        <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20na%20V&D%20Cosméticos" class="btn-whatsapp" target="_blank">
+        <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20na%20V&D%20Cosméticos"
+            class="btn-whatsapp" target="_blank">
             <span class="icone-wpp"></span>
             Fazer Pedido
         </a>
@@ -110,6 +236,24 @@
             <p>© 2026 V&D Cosméticos - Todos os direitos reservados.</p>
         </div>
     </footer>
+    <div id="carrinho" class="carrinho-lateral">
+        <div class="topo">
+            <h2>Seu Carrinho</h2>
+            <button id="fecharCarrinho">X</button>
+        </div>
+
+        <div id="listaCarrinho" class="lista"></div>
+        <p id="carrinhoVazio" class="carrinho-vazio">Seu carrinho está vazio. Adicione produtos para continuar.</p>
+
+        <div class="rodape-carrinho">
+            <h3>Total: R$ <span id="total">0.00</span></h3>
+            <div class="acao-carrinho">
+                <button id="limparCarrinho" class="btn-limpar">Limpar Carrinho</button>
+                <button id="finalizarPedido" class="btn-finalizar">Finalizar Pedido</button>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
