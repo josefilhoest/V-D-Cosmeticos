@@ -53,21 +53,17 @@ p {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(106, 27, 49, 0.95);
+    background: rgb(206, 12, 93);
     backdrop-filter: blur(10px);
-    border-bottom: 2px solid #d4a373;
+    border-bottom: 3px solid #d4a373;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     z-index: 1000;
-
     min-height: 80px;
-    display: flex;
     align-items: center;
     transition: all 0.3s ease;
 }
 
-.header-principal:hover {
-    background: rgba(80, 15, 35, 1);
-}
+
 
 .header-conteudo {
     max-width: 1200px;
@@ -75,6 +71,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+   
     padding: 0 20px;
 }
 
@@ -82,23 +79,23 @@ p {
 .logo-area {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 50px;
 }
 
 .logo {
-    max-width: 120px;
+    max-width: 110px;
     height: auto;
     margin-top: 10px;
+    margin-bottom: 10px;
     display: block;
+    border-radius: 50%;
+    border: 3px solid #ee0d6b;
 
-    transition: all 0.4s ease-in-out;
-    filter: brightness(0) invert(1) drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
+    
+  
 }
 
-.logo-area:hover .logo {
-    transform: scale(1.05);
-    filter: drop-shadow(0px 0px 8px rgba(212, 163, 115, 0.6));
-}
+
 
 /* --- TÍTULO --- */
 .titulo-loja {
@@ -270,7 +267,7 @@ section {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: #6a1b31;
+  
     color: #fff;
     padding: 12px 18px;
     border-radius: 40px;
@@ -283,7 +280,7 @@ section {
 
 .carrinho-icon:hover {
     transform: translateY(-2px);
-    background: #4f1024;
+    background: #f31998;
 }
 
 /* Carrinho lateral */
@@ -325,7 +322,6 @@ section {
     border: none;
     font-size: 1.1rem;
     cursor: pointer;
-    color: #6a1b31;
     padding: 8px;
 }
 
