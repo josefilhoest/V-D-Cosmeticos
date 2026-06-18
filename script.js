@@ -15,18 +15,10 @@ document.querySelectorAll(".navbar a").forEach(link => {
 });
 
 
-// HEADER DINÂMICO AO ROLAR
-const header = document.getElementById("header");
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-        header.style.background = "rgba(80, 15, 35, 1)";
-        header.style.boxShadow = "0 4px 25px rgba(0,0,0,0.3)";
-    } else {
-        header.style.background = "rgba(106, 27, 49, 0.95)";
-        header.style.boxShadow = "0 4px 20px rgba(0,0,0,0.2)";
-    }
-});
+
+
+
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
 const lista = document.getElementById("listaCarrinho");
@@ -41,6 +33,23 @@ const carrinhoBox = document.getElementById("carrinho");
 
 abrir.onclick = () => carrinhoBox.classList.add("ativo");
 fechar.onclick = () => carrinhoBox.classList.remove("ativo");
+
+lista.addEventListener("click", event => {
+    const botao = event.target.closest("button");
+    if (!botao) return;
+
+    if (botao.classList.contains("btn-qty")) {
+        const index = Number(botao.dataset.index);
+        const delta = Number(botao.dataset.delta);
+        alterarQuantidade(index, delta);
+        return;
+    }
+
+    if (botao.classList.contains("btn-remover")) {
+        const index = Number(botao.dataset.index);
+        remover(index);
+    }
+});
 
 // ADICIONAR PRODUTO
 const botoesAdd = document.querySelectorAll(".btn-add");
@@ -90,17 +99,18 @@ function atualizarCarrinho() {
             </div>
             <div class="item-controles">
                 <div class="quantidade">
-                    <button onclick="alterarQuantidade(${index}, -1)">-</button>
+                    <button type="button" class="btn-qty" data-index="${index}" data-delta="-1">-</button>
                     <span>${produto.qtd}</span>
-                    <button onclick="alterarQuantidade(${index}, 1)">+</button>
+                    <button type="button" class="btn-qty" data-index="${index}" data-delta="1">+</button>
                 </div>
-                <button class="btn-remover" onclick="remover(${index})">Remover</button>
+                <button type="button" class="btn-remover" data-index="${index}">Remover</button>
             </div>
         `;
 
         lista.appendChild(div);
     });
 
+    document.getElementById("subtotal").innerText = total.toFixed(2);
     totalEl.innerText = total.toFixed(2);
     contador.innerText = totalItens;
 }
@@ -133,6 +143,16 @@ limparCarrinhoBtn.addEventListener("click", () => {
     atualizarCarrinho();
 });
 
+// LIDAR COM MUDANÇA DE FORMA DE PAGAMENTO
+document.getElementById("pagamentoPedido").addEventListener("change", function() {
+    const parcelasDiv = document.getElementById("parcelasDiv");
+    if (this.value === "Cartao Credito") {
+        parcelasDiv.style.display = "block";
+    } else {
+        parcelasDiv.style.display = "none";
+    }
+});
+
 // SALVAR
 function salvar() {
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
@@ -145,15 +165,74 @@ document.getElementById("finalizarPedido").addEventListener("click", () => {
         return;
     }
 
-    let mensagem = "🛍️ *Pedido V&D Cosméticos*%0A%0A";
+    // Capturar dados do formulário
+    const nome = document.getElementById("nomeCliente").value.trim();
+    const telefone = document.getElementById("telefonePedido").value.trim();
+    const ruaNumero = document.getElementById("ruaNumero").value.trim();
+    const bairro = document.getElementById("bairroPedido").value.trim();
+    const cidade = document.getElementById("cidadePedido").value.trim();
+    const estado = document.getElementById("estadoPedido").value.trim();
+    const pagamento = document.getElementById("pagamentoPedido").value;
+    const parcelas = document.getElementById("parcelasPagamento").value;
 
-    carrinho.forEach(item => {
-        mensagem += `- ${item.nome} (${item.qtd}x) - R$ ${item.preco.toFixed(2)}%0A`;
+    // Validar campos
+    if (!nome) {
+        alert("Por favor, preencha seu nome.");
+        return;
+    }
+    if (!telefone) {
+        alert("Por favor, preencha seu telefone.");
+        return;
+    }
+    if (!ruaNumero || !bairro || !cidade || !estado) {
+        alert("Por favor, preencha o endereço completo de entrega.");
+        return;
+    }
+    if (!pagamento) {
+        alert("Por favor, selecione uma forma de pagamento.");
+        return;
+    }
+
+    const endereco = `${ruaNumero}, ${bairro}, ${cidade} - ${estado}`;
+
+    // Construir mensagem formal
+    let mensagem = "PEDIDO V&D COSMETICOS\n";
+    mensagem += "==================\n\n";
+    mensagem += "CLIENTE: " + nome + "\n";
+    mensagem += "TELEFONE: " + telefone + "\n\n";
+    
+    mensagem += "ITENS DO PEDIDO:\n";
+    mensagem += "---\n";
+
+    let subtotal = 0;
+    carrinho.forEach((item, index) => {
+        const subtotalItem = item.preco * item.qtd;
+        subtotal += subtotalItem;
+        mensagem += `${index + 1}. ${item.nome}\n`;
+        mensagem += `   Quantidade: ${item.qtd}x\n`;
+        mensagem += `   Valor: R$ ${item.preco.toFixed(2)}\n`;
+        mensagem += `   Subtotal: R$ ${subtotalItem.toFixed(2)}\n\n`;
     });
 
-    mensagem += `%0ATotal: R$ ${totalEl.innerText}`;
+    mensagem += "---\n";
+    mensagem += `Subtotal: R$ ${subtotal.toFixed(2)}\n`;
+    mensagem += `VALOR TOTAL: R$ ${subtotal.toFixed(2)}\n\n`;
+    
+    mensagem += "ENDERECO DE ENTREGA:\n";
+    mensagem += endereco + "\n\n";
+    
+    mensagem += "FORMA DE PAGAMENTO:\n";
+    mensagem += pagamento + "\n";
+    
+    if (pagamento === "Cartao Credito") {
+        mensagem += `Parcelas: ${parcelas}\n`;
+    }
+    
+    mensagem += "\n==================\n";
+    mensagem += "Favor confirmar e informar o prazo de entrega.";
 
-    window.open(`https://wa.me/5511999999999?text=${mensagem}`);
+    const urlCodificada = encodeURIComponent(mensagem);
+    window.open(`https://wa.me/5585981963794?text=${urlCodificada}`);
 });
 
 // INICIAR

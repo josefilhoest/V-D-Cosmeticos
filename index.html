@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="V&D Cosméticos - Sua loja de beleza e variedades. Encontre os melhores produtos para realçar sua beleza natural.">
+    <meta name="robots" content="index, follow">
     <title>V&D Cosméticos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header class="header-principal" id="header">
+    <header class="header-principal">
 
         <div class="header-conteudo">
 
@@ -105,7 +108,7 @@
                 <div class="grid-produtos">
                     <div class="card-produto">
                         <div class="imagem-container">
-                            <img src="./img/avon perfumes.png" alt="Eau de Parfum Floral">
+                            <img src="./img/EauDeParfum.jpg" alt="Eau de Parfum Floral">
                         </div>
                         <div class="info-produto">
                             <span>Perfume Feminino</span>
@@ -133,7 +136,7 @@
                     </div>
                     <div class="card-produto">
                         <div class="imagem-container">
-                            <img src="./img/eudora perfumes.jpg" alt="Batom Hidratante Eudora">
+                            <img src="./img/Batom eudora.jpg" alt="Batom Hidratante Eudora">
                         </div>
                         <div class="info-produto">
                             <span>Maquiagem</span>
@@ -246,7 +249,74 @@
         <p id="carrinhoVazio" class="carrinho-vazio">Seu carrinho está vazio. Adicione produtos para continuar.</p>
 
         <div class="rodape-carrinho">
-            <h3>Total: R$ <span id="total">0.00</span></h3>
+            <div class="form-pedido">
+                <div class="form-row">
+                    <div class="campo">
+                        <label for="nomeCliente">Nome</label>
+                        <input type="text" id="nomeCliente" placeholder="Seu nome">
+                    </div>
+                    <div class="campo">
+                        <label for="telefonePedido">Telefone</label>
+                        <input type="text" id="telefonePedido" placeholder="(85) 98000-0000">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="campo">
+                        <label for="ruaNumero">Rua e Número</label>
+                        <input type="text" id="ruaNumero" placeholder="Rua, número" autocomplete="off">
+                    </div>
+                    <div class="campo">
+                        <label for="bairroPedido">Bairro</label>
+                        <input type="text" id="bairroPedido" placeholder="Bairro" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="campo">
+                        <label for="cidadePedido">Cidade</label>
+                        <input type="text" id="cidadePedido" placeholder="Cidade" autocomplete="off">
+                    </div>
+                    <div class="campo">
+                        <label for="estadoPedido">Estado</label>
+                        <input type="text" id="estadoPedido" placeholder="Estado" autocomplete="off">
+                    </div>
+                </div>
+
+                <label for="pagamentoPedido">Forma de Pagamento</label>
+                <select id="pagamentoPedido">
+                    <option value="">Selecione uma opção</option>
+                    <option value="PIX">PIX</option>
+                    <option value="Cartao Debito">Cartão de Débito</option>
+                    <option value="Cartao Credito">Cartão de Crédito</option>
+                    <option value="Boleto">Boleto</option>
+                    <option value="Dinheiro">Dinheiro na Entrega</option>
+                    <option value="Transferencia Bancaria">Transferência Bancária</option>
+                </select>
+
+                <div id="parcelasDiv">
+                    <label for="parcelasPagamento">Quantidade de Parcelas</label>
+                    <select id="parcelasPagamento">
+                        <option value="1">1x sem juros</option>
+                        <option value="2">2x sem juros</option>
+                        <option value="3">3x sem juros</option>
+                        <option value="6">6x com juros</option>
+                        <option value="12">12x com juros</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="resumo-valores">
+                <div class="linha-valor">
+                    <span>Subtotal:</span>
+                    <span>R$ <span id="subtotal">0.00</span></span>
+                </div>
+                <div class="linha-valor total">
+                    <span>TOTAL:</span>
+                    <span>R$ <span id="total">0.00</span></span>
+                </div>
+            </div>
+
             <div class="acao-carrinho">
                 <button id="limparCarrinho" class="btn-limpar">Limpar Carrinho</button>
                 <button id="finalizarPedido" class="btn-finalizar">Finalizar Pedido</button>
